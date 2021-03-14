@@ -3,21 +3,18 @@ module RedmineRate
     # Overwrite QueriesHelper
     module QueriesHelperPatch
       def self.included(base)
-        base.send(:include, InstanceMethods)
-        base.class_eval do
-          alias_method_chain :column_value, :rate
-        end
+        base.send(:prepend, InstanceMethods)
       end
 
       # Instance methods to add customize values
       module InstanceMethods
-        def column_value_with_rate(column, list_object, value)
+        def column_value(column, list_object, value)
           if column.name == :cost && list_object.is_a?(TimeEntry)
             show_number_with_currency value
           elsif column.name == :costs && list_object.is_a?(Issue)
             show_number_with_currency value
           else
-            column_value_without_rate(column, list_object, value)
+            super(column, list_object, value)
           end
         end
       end

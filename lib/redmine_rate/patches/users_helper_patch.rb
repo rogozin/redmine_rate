@@ -1,14 +1,11 @@
 require_dependency 'users_helper'
-include RateHelper
 
 module RedmineRate
   module Patches
     module UsersHelperPatch
       def self.included(base)
-        base.send(:include, InstanceMethods)
+        base.send(:prepend, InstanceMethods)
         base.class_eval do
-          alias_method_chain :user_settings_tabs, :rate_tab
-
           # Similar to +project_options_for_select+ but allows selecting the active value
           def project_options_for_select_with_selected(projects, selected = nil)
             options = content_tag('option', "--- #{l(:rate_label_default)} ---", value: '')
@@ -32,8 +29,8 @@ module RedmineRate
 
       module InstanceMethods
         # Adds a rates tab to the user administration page
-        def user_settings_tabs_with_rate_tab
-          tabs = user_settings_tabs_without_rate_tab
+        def user_settings_tabs
+          tabs = super
           tabs << { name: 'rates', partial: 'users/rates', label: :rate_label_rate_history }
         end
       end

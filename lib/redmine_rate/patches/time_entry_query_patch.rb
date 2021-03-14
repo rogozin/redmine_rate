@@ -2,30 +2,25 @@ module RedmineRate
   module Patches
     module TimeEntryQueryPatch
       def self.included(base)
-        base.send(:include, InstanceMethods)
-        base.class_eval do
-          alias_method_chain :available_columns, :rate
-          alias_method_chain :initialize_available_filters, :rate
-        end
+        base.send(:prepend, InstanceMethods)
       end
 
       module InstanceMethods
-        def available_columns_with_rate
-          if @available_columns.blank?
-            @available_columns = available_columns_without_rate
+        def available_columns
+          super
+          if @available_columns.none?{|c| c.name == :cost || c.name == :billable }
             @available_columns << QueryColumn.new(:cost,
                                                   sortable: "#{TimeEntry.table_name}.cost",
                                                   totalable: true)
+
             @available_columns << QueryColumn.new(:billable,
                                                   sortable: "#{TimeEntry.table_name}.billable")
-          else
-            available_columns_without_rate
           end
           @available_columns
         end
 
-        def initialize_available_filters_with_rate
-          initialize_available_filters_without_rate
+        def initialize_available_filters
+          super
 
           add_available_filter('cost', name: l(:field_cost), type: :float) unless available_filters.key?('cost')
           return if available_filters.key?('billable')

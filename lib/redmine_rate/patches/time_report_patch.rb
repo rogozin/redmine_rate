@@ -4,15 +4,12 @@ module RedmineRate
   module Patches
     module TimeReportPatch
       def self.included(base)
-        base.send(:include, InstanceMethods)
-        base.class_eval do
-          alias_method_chain :load_available_criteria, :cost
-        end
+        base.send(:prepend, InstanceMethods)
       end
 
       module InstanceMethods
-        def load_available_criteria_with_cost
-          @available_criteria = load_available_criteria_without_cost
+        def load_available_criteria
+          @available_criteria = super
           @available_criteria['billable'] = {
             sql: "#{TimeEntry.table_name}.billable",
             format: 'bool',

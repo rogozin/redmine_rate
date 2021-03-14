@@ -2,16 +2,13 @@ module RedmineRate
   module Patches
     module IssueQueryPatch
       def self.included(base)
-        base.send(:include, InstanceMethods)
-        base.class_eval do
-          alias_method_chain :available_columns, :rate
-        end
+        base.send(:prepend, InstanceMethods)
       end
 
       module InstanceMethods
-        def available_columns_with_rate
+        def available_columns
           return @available_columns if @available_columns
-          available_columns_without_rate
+          super
 
           # insert the column after total_estimated_hours or at the end
           index = @available_columns.find_index { |column| column.name == :total_spent_hours }

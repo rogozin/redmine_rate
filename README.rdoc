@@ -86,3 +86,10 @@ using the provided rate tasks (rake rate_plugin:cache:update_cost_cache, rake ra
 == License
 
 This plugin is licensed under the GNU GPL v2.  See COPYRIGHT.txt and GPL.txt for details.
+
+
+== Changelog
+
+2021-03-14 Redmine 4.1 support
+- aliase_method_chain replaced to module prepend
+- permit! ActionController::Parameters somewhere in helpers

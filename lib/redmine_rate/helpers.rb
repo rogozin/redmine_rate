@@ -50,7 +50,7 @@ module RedmineRate
 
       sort_options = { sort: @sort_criteria.add(column.to_s, order).to_param }
       # don't reuse params if filters are present
-      url_options = params.key?(:set_filter) ? sort_options : params.merge(sort_options)
+      url_options = params.permit!.key?(:set_filter) ? sort_options : params.merge(sort_options)
 
       # Add project_id to url_options
       url_options = url_options.merge(project_id: params[:project_id]) if params.key?(:project_id)

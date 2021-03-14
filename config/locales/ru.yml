@@ -1,29 +1,29 @@
 ru:
-  billable_default_info: If active, all time log entries will be activated as "billable". In case the user has not the right to activate "billable" all time log entries will be automatically selected as "billable".
-  field_billable: Billable
-  field_cost: Cost
-  label_rate_cost: Cost
-  label_billable_default: Default billable
-  label_rate_caches: "Rate Caches"
-  label_rate_plural: Платежи
-  label_rate: Платеж
-  label_total_cost: Costs with subtasks
-  permission_activate_billable: Activate billable
-  permission_view_rate: Show rate
-  rate_created_message: Rate was successfully created.
-  rate_error_creating_new_rate: Error creating a new rate.
+  billable_default_info: Если выбрано, все треки пользователя будут отмечены как “Оплачиваемые”. В случае, если пользователь не имеет права выбирать статус “Оплачиваемый” для своего трека, все треки автоматически выбирается как “Оплачиваемые”.
+  field_billable: Оплачиваемый
+  field_cost: Расходы
+  label_rate_cost: Расходы
+  label_billable_default: Трек “Оплачиваемый” по умолчанию
+  label_rate_caches: "Кэш часовых ставок"
+  label_rate_plural: Часовые ставки
+  label_rate: Часовая ставка
+  label_total_cost: Расходы с подзадачами
+  permission_activate_billable: Включать “Оплачиваемый” у трека
+  permission_view_rate: Показать часовую ставку
+  rate_created_message: Часовая ставка успешно добавлена
+  rate_error_creating_new_rate: Ошибка при добавлении новой часовой ставки
   rate_error_user_not_found: Пользователь не найден
-  rate_label_currency: Currency
-  rate_label_default: Платеж по умолчанию
-  rate_label_edit_rate: Edit rate
-  rate_label_new_rate: Новый платежe
-  rate_label_rate_history: История платежей
-  rate_label_set_rate: Установить платеж
-  rate_locked_message:  Rate is locked and cannot be edited
-  rate_updated_message: Rate was successfully updated.
-  text_caches_loaded_successfully: "Caches chargés avec succés"
-  text_clear_and_load_all_caches: "Recharger tous les caches"
-  text_last_cache_clearing_run: "Dernier cache purgé à : "
-  text_last_caching_run: "Dernier cache actif à : "
-  text_load_missing_caches: "Charger les caches manquants"
-  text_no_cache_run: "pas de cache actif trouvé"
+  rate_label_currency: Валюта
+  rate_label_default: Часовая ставка по умолчанию
+  rate_label_edit_rate: Изменить часовую ставку
+  rate_label_new_rate: Новая часовая ставка
+  rate_label_rate_history: История изменения часовой ставки
+  rate_label_set_rate: Установить часовую ставку
+  rate_locked_message: Часовая ставка заблокирована и не может быть изменена
+  rate_updated_message: Часовая ставка успешно изменена
+  text_caches_loaded_successfully: "Кэш успешно изменен"
+  text_clear_and_load_all_caches: "Перезагрузить весь кэш"
+  text_last_cache_clearing_run: "Последний кэш очищен в : "
+  text_last_caching_run: "Последний активный кэш в : "
+  text_load_missing_caches: "Загрузка отсутствующего кэша"
+  text_no_cache_run: "активного кэша не найдено"
